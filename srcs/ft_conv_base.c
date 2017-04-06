@@ -15,7 +15,7 @@
 char	*ft_conv_base1(char *str, t_glob *g, va_list *ap)
 {
 	if ((g->type == 'o') && !g->flagh && !g->flagl && !g->flagj && !g->flagz)
-		str = ft_itoa_base(va_arg(ap[0], int), 8);
+		str = ft_itoa_base(va_arg(ap[0], uintmax_t), 8);
 	if ((g->type == 'O') && !g->flagh && !g->flagl && !g->flagj && !g->flagz)
 		str = unsigned_itoa_base(va_arg(ap[0], uintmax_t), 8);
 	if (g->type == 'b')

@@ -36,6 +36,7 @@ typedef	struct		s_fd
 	struct s_fd		*srt;
 }					t_fd;
 
+char				*ft_strrev(char *str);
 char				*ft_ftoa(float chiffre, int decimal);
 wchar_t				*ft_uni_strsub(wchar_t *s, unsigned int start, size_t len);
 wchar_t				ft_uni_strcmp(wchar_t *s1, wchar_t *s2);
@@ -86,7 +87,6 @@ void				*ft_bzero(void *s, size_t n);
 int					ft_atoi(const char *str);
 void				ft_putstr(char const *s);
 void				ft_putchar(char c);
-char				*ft_strrev(char *str);
 char				**ft_strsplit(char const *str, char c);
 char				*ft_strtrim(char const *s);
 char				*ft_strmap(char const *s, char (*f)(char));
@@ -124,6 +124,6 @@ char				*ft_strrchr(const char *str, int c);
 char				*ft_itoa_base(intmax_t n, int base);
 char				*ft_strrealloc(char *str, size_t n);
 char				*unsigned_itoa_base(uintmax_t n, int base);
-int					ft_atoi_base(const char *str, int base);
+int					ft_atoi_base(char *str, int base);
 
 #endif

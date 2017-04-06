@@ -44,8 +44,6 @@ int		ft_uni_string(va_list *ap, t_glob *g)
 	int		bol;
 
 	bol = 0;
-	if (g->flagl)
-		return (ft_uni_string(ap, g));
 	str = va_arg(ap[0], wchar_t *);
 	if (str == NULL)
 	{

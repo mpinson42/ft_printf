@@ -66,7 +66,8 @@ char	*ft_debug_base(char *str, t_glob *g)
 	if (g->flag_0 && g->flag_htag && g->type == 'x' &&
 			g->flag_largeur > (int)ft_strlen(str) - 2)
 		str[1] = 'x';
-	if (g->flag_htag && g->type == 'o' && g->presision != -1)
+	if (g->flag_htag && g->type == 'o' && g->presision != -1
+		&& g->presision != 0)
 	{
 		i = (int)ft_strlen(str);
 		s = -1;

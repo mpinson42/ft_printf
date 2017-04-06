@@ -125,7 +125,7 @@ char	*ft_conv_int5(char *str, t_glob *g, va_list *ap)
 	if (g->type == 'u' && !g->flagh && !g->flagl && g->flagj && !g->flagz)
 		str = unsigned_itoa_base(va_arg(ap[0], uintmax_t), 10);
 	if (!g->flagh && !g->flagl && !g->flagj && g->flagz)
-		str = unsigned_itoa_base(va_arg(ap[0], ssize_t), 10);
+		str = ft_itoa_base(va_arg(ap[0], ssize_t), 10);
 	if (g->type == 'u' && !g->flagh && !g->flagl && !g->flagj && !g->flagz)
 		str = unsigned_itoa_base(va_arg(ap[0], unsigned int), 10);
 	if (g->type == 'U' && !g->flagh && !g->flagl && !g->flagj && !g->flagz)

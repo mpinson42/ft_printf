@@ -19,8 +19,6 @@ int	ft_unichar(va_list *ap, t_glob *g)
 	int		i;
 
 	i = 0;
-	if (g->flagl == 1)
-		return (ft_unichar(ap, g));
 	str = va_arg(ap[0], wchar_t);
 	if (g->flag_largeur < 2)
 		return (ft_uni_putchar(str));
