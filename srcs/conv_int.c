@@ -54,16 +54,7 @@ char	*ft_conv_int2(char *str, t_glob *g, va_list *ap, int *bol)
 	}
 	if ((g->type == 'd' || g->type == 'i') && g->flagh == 2 &&
 			!g->flagl && !g->flagj && !g->flagz)
-	{
 		str = ft_itoa_base((signed char)va_arg(ap[0], int), 10);
-		/*i = ft_atoi(str);
-		if (i < -128)
-			str = ft_itoa(128 + (i + 128));
-		else if (i > 127)
-			str = ft_itoa(-128 + (i - 128));
-		else if (i == -128)
-			str = ft_itoa(-128);*/
-	}
 	return (str);
 }
 
@@ -73,14 +64,7 @@ char	*ft_conv_int3(char *str, t_glob *g, va_list *ap, int *bol)
 
 	if (g->type == 'u' && g->flagh == 2 && !g->flagl && !g->flagj
 			&& !g->flagz)
-	{
 		str = unsigned_itoa_base((unsigned char)va_arg(ap[0], int), 10);
-	/*	if (i < 0)
-			bol[0] = 1;
-		if (i > 255)
-			i = 0 + (i - 255) - 1;*/
-	//	str = ft_itoa(str);
-	}
 	if ((g->type == 'D' || g->type == 'U') && g->flagh == 2 && !g->flagl &&
 			!g->flagj && !g->flagz)
 	{
@@ -128,7 +112,8 @@ char	*ft_conv_int5(char *str, t_glob *g, va_list *ap)
 		str = ft_itoa_base(va_arg(ap[0], ssize_t), 10);
 	if (g->type == 'u' && !g->flagh && !g->flagl && !g->flagj && !g->flagz)
 		str = unsigned_itoa_base(va_arg(ap[0], unsigned int), 10);
-	if ((g->type == 'u') && !g->flagh && !g->flagl && !g->flagj && g->flagz == 1)
+	if ((g->type == 'u') && !g->flagh && !g->flagl && !g->flagj &&
+		g->flagz == 1)
 		str = unsigned_itoa_base((ssize_t)va_arg(ap[0], uintmax_t), 10);
 	if (g->type == 'U' && !g->flagh && !g->flagl && !g->flagj && !g->flagz)
 		str = unsigned_itoa_base(va_arg(ap[0], unsigned long), 10);

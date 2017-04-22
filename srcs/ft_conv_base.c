@@ -48,12 +48,7 @@ char	*ft_conv_base2(char *str, va_list *ap, t_glob *g)
 	test = 0;
 	if ((g->type == 'o') && g->flagh == 2 && !g->flagl && !g->flagj &&
 			!g->flagz)
-	{
 		str = unsigned_itoa_base((unsigned char)va_arg(ap[0], int), 8);
-		/*if (test > 255)
-			test = 0 + (test - 255) - 1;
-		str = unsigned_itoa_base(test, 8);*/
-	}
 	if ((g->type == 'o') && !g->flagh && g->flagl == 2 && !g->flagj &&
 			!g->flagz)
 	{

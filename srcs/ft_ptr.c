@@ -48,34 +48,62 @@ int		ft_pourcent(t_glob *g)
 	return (write(1, str, ft_strlen(str)));
 }
 
-char *ft_pressison(t_glob *g, char *str)
+char	*ft_pressison(t_glob *g, char *str)
 {
-	int i;
-	int y;
-	char *tmp;
+	int		i;
+	int		y;
+	char	*tmp;
 
 	i = 2;
 	y = 0;
-	tmp = malloc(sizeof(char) * (g->presision + 1));
+	if (!(tmp = malloc(sizeof(char) * (g->presision + 1))))
+		return (NULL);
 	ft_bzero(tmp, ft_strlen(str) + 1);
-	if(g->presision != -1)
+	if (g->presision != -1)
 	{
-		while(y < g->presision - (int)ft_strlen(str) + 2)
+		while (y < g->presision - (int)ft_strlen(str) + 2)
 		{
 			tmp[y] = '0';
 			y++;
 		}
-		while(str[i] && i < g->presision)
+		while (str[i] && i < g->presision)
 		{
 			tmp[y] = str[i];
-			y++; 
+			y++;
 			i++;
 		}
-		
-		//printf("--->%s   %d\n", tmp, i);
 		str = ft_strjoin("0x", tmp);
 	}
-	return(str);
+	return (str);
+}
+
+char	*presison_ptr(t_glob *g, char *str, char *ptr, int tmp)
+{
+	int i;
+
+	if ((int)ft_strlen(ptr) < g->flag_largeur && !g->flag_neg && !g->flag_0)
+	{
+		if (!(str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur))))
+			return (NULL);
+		i = ft_absolut(ft_strlen(ptr) - g->flag_largeur);
+		while (++tmp < i)
+			str[tmp] = ' ';
+		i = 0;
+		while (tmp < g->flag_largeur)
+			str[tmp++] = ptr[i++];
+	}
+	if ((int)ft_strlen(ptr) < g->flag_largeur && !g->flag_neg && g->flag_0)
+	{
+		if (!(str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur))))
+			return (NULL);
+		i = ft_absolut(ft_strlen(ptr) - g->flag_largeur);
+		i = -1;
+		while (++i < (int)ft_strlen(ptr))
+			str[i] = ptr[i];
+		while (i < g->flag_largeur)
+			str[i++] = '0';
+	}
+	return (str);
 }
 
 int		ft_pointeur(va_list *ap, t_glob *g)
@@ -85,47 +113,22 @@ int		ft_pointeur(va_list *ap, t_glob *g)
 	int		i;
 	int		tmp;
 
-	tmp = 0;
+	tmp = -1;
 	ptr = ft_strjoin("0x", ft_itoa_base((uintmax_t)va_arg(ap[0], void *), 16));
 	str = ptr;
 	str = ft_pressison(g, str);
-	if ((int)ft_strlen(ptr) < g->flag_largeur && !g->flag_neg && !g->flag_0)
-	{
-		str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur));
-		i = ft_absolut(ft_strlen(ptr) - g->flag_largeur);
-		tmp = -1;
-		while (++tmp < i)
-			str[tmp] = ' ';
-		i = 0;
-		while (tmp < g->flag_largeur)
-			str[tmp++] = ptr[i++];
-	}
-	if ((int)ft_strlen(ptr) < g->flag_largeur && !g->flag_neg && g->flag_0)
-	{
-		str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur));
-		i = ft_absolut(ft_strlen(ptr) - g->flag_largeur);
-		i = -1;
-		while (++i < (int)ft_strlen(ptr))
-			str[i] = ptr[i];
-		//printf("%s\n", str);
-		while (i < g->flag_largeur)
-			str[i++] = '0';
-	}
+	str = presison_ptr(g, str, ptr, tmp);
 	if ((int)ft_strlen(ptr) < g->flag_largeur && g->flag_neg && !g->flag_0)
 	{
-		str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur));
+		if (!(str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur))))
+			return (-1);
 		i = ft_absolut(ft_strlen(ptr) - g->flag_largeur);
 		i = -1;
 		while (++i < (int)ft_strlen(ptr))
 			str[i] = ptr[i];
-		//ft_printf("%s", str);
 		while (i < g->flag_largeur)
-		{
-		//	ft_putchar(' ');
 			str[i++] = ' ';
-		}
 	}
-	//str = ft_largeur_ptr(ptr, tmp, str, g);
 	ft_putstr(str);
 	return (ft_strlen(str));
 }

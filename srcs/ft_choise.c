@@ -12,36 +12,40 @@
 
 #include "../include/ft_printf.h"
 
-int ft_largeur_no(char c, t_glob *g)
+char	*ft_largeur_no2(char *str, t_glob *g)
+{
+	while (g->flag_largeur - 1 && !g->flag_neg && g->flag_0)
+	{
+		str = ft_strjoin("0", str);
+		g->flag_largeur--;
+	}
+	while (g->flag_largeur - 1 && g->flag_neg)
+	{
+		str = ft_strjoin(str, " ");
+		g->flag_largeur--;
+	}
+	return (str);
+}
+
+int		ft_largeur_no(char c, t_glob *g)
 {
 	char *str;
 
-	str = malloc(sizeof(char) * 2);
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
+		return (-1);
 	str[0] = c;
 	str[1] = 0;
-	if(!g->flag_largeur)
+	!g->flag_largeur ? ft_putchar(c) : 0;
+	if (!g->flag_largeur)
+		return (1);
+	while (g->flag_largeur - 1 && !g->flag_neg && !g->flag_0)
 	{
-		ft_putchar(c);
-		return(1);
-	}
-	while(g->flag_largeur - 1 && !g->flag_neg && !g->flag_0)
-	{
-		str = ft_strjoin(" " ,str);
+		str = ft_strjoin(" ", str);
 		g->flag_largeur--;
 	}
-	while(g->flag_largeur - 1 && !g->flag_neg && g->flag_0)
-	{
-		str = ft_strjoin("0" ,str);
-		g->flag_largeur--;
-	}
-	while(g->flag_largeur - 1 && g->flag_neg)
-	{
-		str = ft_strjoin(str , " ");
-		g->flag_largeur--;
-	}
+	str = ft_largeur_no2(str, g);
 	ft_putstr(str);
-	//printf("%d", g->flag_largeur);
-	return(ft_strlen(str));
+	return (ft_strlen(str));
 }
 
 int		ft_time(va_list *ap, t_glob *g)
@@ -79,7 +83,5 @@ int		ft_choise(va_list *ap, t_glob *g)
 		return (ft_base(ap, g));
 	if (g->type == 'k' || g->type == '%')
 		return (ft_time(ap, g));
-//	if(g->type != 125)
-		return(ft_largeur_no(g->type, g));
-	return (0);
+	return (ft_largeur_no(g->type, g));
 }

@@ -48,11 +48,7 @@ int		ft_string(va_list *ap, t_glob *g)
 		return (ft_uni_string(ap, g));
 	str = va_arg(ap[0], char *);
 	if (str == NULL)
-	{
-		//ft_putstr("(null)");
 		str = ft_strdup("(null)");
-		//return (6);
-	}
 	str = ft_presision_str1(str, g, bol);
 	str = ft_presision_str2(str, g, bol);
 	str = ft_largeur_str1(str, g);

@@ -35,6 +35,7 @@ typedef struct	s_glob
 	int					flagj;
 	int					flagz;
 	char				type;
+	int					i;
 }				t_glob;
 
 int				ft_base(va_list *ap, t_glob *g);

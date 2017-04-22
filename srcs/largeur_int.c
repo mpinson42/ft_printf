@@ -18,7 +18,8 @@ char	*ft_largeur_int1(char *str, t_glob *g, int bol)
 	int		s;
 	char	*tmp;
 
-	if (g->flag_more && !bol && g->type != 'u' && g->type != 'U' && g->type != 'o' && g->type != 'O' && g->type != 'x' && g->type != 'X')
+	if (g->flag_more && !bol && g->type != 'u' && g->type != 'U' && g->type
+		!= 'o' && g->type != 'O' && g->type != 'x' && g->type != 'X')
 	{
 		if (!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
 			return (NULL);
@@ -39,7 +40,8 @@ char	*ft_largeur_int2(char *str, t_glob *g, int bol)
 	int		s;
 	char	*tmp;
 
-	if (g->flag_space && !bol && g->type != 'u' && g->type != 'U' && g->type != 'o' && g->type != 'O' && g->type != 'x' && g->type != 'X')
+	if (g->flag_space && !bol && g->type != 'u' && g->type != 'U' && g->type
+		!= 'o' && g->type != 'O' && g->type != 'x' && g->type != 'X')
 	{
 		if (!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
 			return (NULL);

@@ -92,8 +92,6 @@ int		ft_lecture(int *i, char *str, va_list *ap)
 
 	ft_init(&g);
 	count = ft_search_flag(&g, str, i);
-//	if(str[0] == '0' || !ft_isdigit(str[1]))
-//		g.flag_0 = 1;
 	if (count == 1)
 		return (1);
 	if (g.type == 'n')

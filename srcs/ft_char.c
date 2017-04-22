@@ -40,9 +40,8 @@ int	ft_char(va_list *ap, t_glob *g)
 {
 	unsigned char	str;
 	char			*s;
-	int				i;
 
-	i = 0;
+	g->i = 0;
 	if (g->flagl == 1)
 		return (ft_unichar(ap, g));
 	str = va_arg(ap[0], int);
@@ -51,16 +50,15 @@ int	ft_char(va_list *ap, t_glob *g)
 		return (1);
 	if (!(s = (char *)malloc(sizeof(char) * 2)))
 		return (-1);
-	//printf("->%d\n", g->flag_0);
 	while (g->flag_largeur-- - 1 && !g->flag_neg && !g->flag_0)
-		s[i++] = ' ';
+		s[g->i++] = ' ';
 	while (g->flag_largeur-- && !g->flag_neg && g->flag_0)
-		s[i++] = '0';
-	!g->flag_neg ? s[i] = str : 0;
-	while (g->flag_largeur-- + 1&& g->flag_neg)
+		s[g->i++] = '0';
+	!g->flag_neg ? s[g->i] = str : 0;
+	while (g->flag_largeur-- + 1 && g->flag_neg)
 	{
 		s[0] = str;
-		s[i++ + 1] = ' ';
+		s[g->i++ + 1] = ' ';
 	}
 	if (str != 0)
 		return (write(1, s, ft_strlen(s)));
