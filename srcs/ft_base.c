@@ -82,6 +82,23 @@ char	*ft_debug_base(char *str, t_glob *g)
 	return (str);
 }
 
+char	*ft_base2(char *str, t_glob *g, int bol)
+{
+	if (!(str = ft_largeur_int3(str, g)))
+		return (NULL);
+	if (!(str = ft_largeur_int4(str, g)))
+		return (NULL);
+	if (!(str = ft_largeur_int5(str, g, bol)))
+		return (NULL);
+	if (!(str = ft_largeur_int6(str, g, bol)))
+		return (NULL);
+	if (!(str = ft_largeur_int7(str, g, bol)))
+		return (NULL);
+	if (!(str = ft_debug_base(str, g)))
+		return (NULL);
+	return (str);
+}
+
 int		ft_base(va_list *ap, t_glob *g)
 {
 	char		*str;
@@ -96,16 +113,16 @@ int		ft_base(va_list *ap, t_glob *g)
 	str = ft_conv_base1(str, g, ap);
 	str = ft_conv_base2(str, ap, g);
 	str = ft_conv_base3(str, ap, g);
-	str = ft_conv_base4(str, ap, g);
-	str = ft_presision_base(str, g, &bol);
-	str = ft_largeur_int1(str, g, bol);
-	str = ft_largeur_int2(str, g, bol);
-	str = ft_largeur_int3(str, g);
-	str = ft_largeur_int4(str, g);
-	str = ft_largeur_int5(str, g, bol);
-	str = ft_largeur_int6(str, g, bol);
-	str = ft_largeur_int7(str, g, bol);
-	str = ft_debug_base(str, g);
+	if (!(str = ft_conv_base4(str, ap, g)))
+		return (-1);
+	if (!(str = ft_presision_base(str, g, &bol)))
+		return (-1);
+	if (!(str = ft_largeur_int1(str, g, bol)))
+		return (-1);
+	if (!(str = ft_largeur_int2(str, g, bol)))
+		return (-1);
+	if (!(str = ft_base2(str, g, bol)))
+		return (-1);
 	ft_putstr(str);
 	return ((int)ft_strlen(str));
 }

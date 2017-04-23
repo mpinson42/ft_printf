@@ -16,12 +16,14 @@ char	*ft_largeur_no2(char *str, t_glob *g)
 {
 	while (g->flag_largeur - 1 && !g->flag_neg && g->flag_0)
 	{
-		str = ft_strjoin("0", str);
+		if (!(str = ft_strjoin("0", str)))
+			return (NULL);
 		g->flag_largeur--;
 	}
 	while (g->flag_largeur - 1 && g->flag_neg)
 	{
-		str = ft_strjoin(str, " ");
+		if (!(str = ft_strjoin(str, " ")))
+			return (NULL);
 		g->flag_largeur--;
 	}
 	return (str);
@@ -40,10 +42,12 @@ int		ft_largeur_no(char c, t_glob *g)
 		return (1);
 	while (g->flag_largeur - 1 && !g->flag_neg && !g->flag_0)
 	{
-		str = ft_strjoin(" ", str);
+		if (!(str = ft_strjoin(" ", str)))
+			return (-1);
 		g->flag_largeur--;
 	}
-	str = ft_largeur_no2(str, g);
+	if (!(str = ft_largeur_no2(str, g)))
+		return (-1);
 	ft_putstr(str);
 	return (ft_strlen(str));
 }

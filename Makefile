@@ -7,7 +7,7 @@ SRC = 	./srcs/ft_printf.c ./srcs/ft_choise.c ./srcs/ft_lecture.c ./libft/ft_putc
 		./libft/ft_uni_strcmp.c ./libft/ft_atoi_base.c ./srcs/ft_string.c ./srcs/ft_uni_string.c ./srcs/ft_int.c ./srcs/ft_char.c ./srcs/ft_base.c \
 		./libft/ft_ftoa.c ./libft/ft_strjoin_free.c ./libft/ft_strdel.c ./srcs/largeur_int.c ./srcs/conv_int.c ./srcs/ft_largeur_int2.c \
 		./srcs/ft_conv_base.c ./srcs/ft_ptr.c ./srcs/ft_largeur_str.c ./srcs/presision_str.c ./srcs/ft_largeur_uni.c ./srcs/ft_presision_uni.c \
-		./srcs/ft_lecture2.c ./libft/ft_strrev.c ./libft/ft_strdup.c
+		./srcs/ft_lecture2.c ./libft/ft_strrev.c ./libft/ft_strdup.c ./libft/ft_uni_strdup.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -17,7 +17,8 @@ SRC2 = 	ft_printf.o ft_choise.o ft_lecture.o ft_putchar.o ft_putstr.o ft_strchr.
 		ft_memcpy.o ft_uni_putchar.o ft_uni_strlen.o ft_uni_strsub.o ft_uni_putstr.o ft_pushback.o \
 		ft_atoi_base.o ft_uni_strcmp.o ./ft_string.o ./ft_uni_string.o ./ft_int.o ./ft_char.o ./ft_base.o \
 		./ft_ftoa.o ft_strjoin_free.o ./ft_strdel.o ./largeur_int.o ./conv_int.o ft_largeur_int2.o ft_conv_base.o \
-		ft_ptr.o ft_largeur_str.o presision_str.o ft_largeur_uni.o ft_presision_uni.o ft_lecture2.o ft_strrev.o ft_strdup.o
+		ft_ptr.o ft_largeur_str.o presision_str.o ft_largeur_uni.o ft_presision_uni.o ft_lecture2.o ft_strrev.o ft_strdup.o \
+		./ft_uni_strdup.o
 
 all: $(NAME)
 

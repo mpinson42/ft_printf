@@ -111,19 +111,20 @@ int		ft_pointeur(va_list *ap, t_glob *g)
 	char	*ptr;
 	char	*str;
 	int		i;
-	int		tmp;
 
-	tmp = -1;
-	ptr = ft_strjoin("0x", ft_itoa_base((uintmax_t)va_arg(ap[0], void *), 16));
+	i = -1;
+	if (!(ptr = ft_strjoin("0x",
+		ft_itoa_base((uintmax_t)va_arg(ap[0], void *), 16))))
+		return (-1);
 	str = ptr;
-	str = ft_pressison(g, str);
-	str = presison_ptr(g, str, ptr, tmp);
+	if (!(str = ft_pressison(g, str)))
+		return (-1);
+	if (!(str = presison_ptr(g, str, ptr, i)))
+		return (-1);
 	if ((int)ft_strlen(ptr) < g->flag_largeur && g->flag_neg && !g->flag_0)
 	{
 		if (!(str = (char *)malloc(sizeof(char) * (1 + g->flag_largeur))))
 			return (-1);
-		i = ft_absolut(ft_strlen(ptr) - g->flag_largeur);
-		i = -1;
 		while (++i < (int)ft_strlen(ptr))
 			str[i] = ptr[i];
 		while (i < g->flag_largeur)

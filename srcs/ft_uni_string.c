@@ -21,7 +21,8 @@ wchar_t	*ft_largeur_uni_6(wchar_t *str, t_glob *g, int bol)
 	if ((int)ft_uni_strlen(str) < g->flag_largeur && !g->flag_neg &&
 			g->flag_0 && bol)
 	{
-		if (!(tmp = (wchar_t *)malloc(sizeof(wchar_t) * (1 + g->flag_largeur))))
+		if (!(tmp = (wchar_t *)malloc(sizeof(wchar_t) *
+			(1 + g->flag_largeur))))
 			return (NULL);
 		i = ft_absolut(ft_uni_strlen(str) - g->flag_largeur) + 1;
 		s = 0;
@@ -38,6 +39,19 @@ wchar_t	*ft_largeur_uni_6(wchar_t *str, t_glob *g, int bol)
 	return (str);
 }
 
+wchar_t	*ft_uni_string2(wchar_t *str, t_glob *g, int bol)
+{
+	if (!(str = ft_largeur_uni_3(str, g, bol)))
+		return (NULL);
+	if (!(str = ft_largeur_uni_4(str, g, bol)))
+		return (NULL);
+	if (!(str = ft_largeur_uni_5(str, g, bol)))
+		return (NULL);
+	if (!(str = ft_largeur_uni_6(str, g, bol)))
+		return (NULL);
+	return (str);
+}
+
 int		ft_uni_string(va_list *ap, t_glob *g)
 {
 	wchar_t	*str;
@@ -50,13 +64,15 @@ int		ft_uni_string(va_list *ap, t_glob *g)
 		ft_putstr("(null)");
 		return (6);
 	}
-	str = ft_presision_uni1(str, g, bol);
-	str = ft_presision_uni2(str, g, bol);
-	str = ft_largeur_uni_1(str, g);
-	str = ft_largeur_uni_2(str, g);
-	str = ft_largeur_uni_3(str, g, bol);
-	str = ft_largeur_uni_4(str, g, bol);
-	str = ft_largeur_uni_5(str, g, bol);
-	str = ft_largeur_uni_6(str, g, bol);
+	if (!(str = ft_presision_uni1(str, g, bol)))
+		return (-1);
+	if (!(str = ft_presision_uni2(str, g, bol)))
+		return (-1);
+	if (!(str = ft_largeur_uni_1(str, g)))
+		return (-1);
+	if (!(str = ft_largeur_uni_2(str, g)))
+		return (-1);
+	if (!(str = ft_uni_string2(str, g, bol)))
+		return (-1);
 	return (ft_uni_putstr(str));
 }

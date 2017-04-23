@@ -36,6 +36,7 @@ typedef	struct		s_fd
 	struct s_fd		*srt;
 }					t_fd;
 
+wchar_t				*ft_uni_strdup(char *src);
 char				*ft_ftoa(float chiffre, int decimal);
 wchar_t				*ft_uni_strsub(wchar_t *s, unsigned int start, size_t len);
 wchar_t				ft_uni_strcmp(wchar_t *s1, wchar_t *s2);

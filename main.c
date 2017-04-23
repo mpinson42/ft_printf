@@ -46,8 +46,10 @@ int main(void)
 	char c;
 	char i = 0;
 
-
-		printf("%d\n" , ft_printf("ft_printf : %042.D", 12));
-		printf("%d\n" , printf("no_printf : %042.D", 12));
+		printf("--->%d\n", sizeof(L'c'));
+		printf("%d\n" , ft_printf("ft_printf : %S", L"我是一只猫。"));
+		printf("%d\n" , printf("no_printf : %S", L"我是一只猫。"));
+		printf("%d\n" , ft_printf("ft_printf : %S", L"我是一只猫。"));
+		printf("%d\n" , printf("no_printf : %S", L"我是一只猫。"));
 
 }
