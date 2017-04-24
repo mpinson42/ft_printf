@@ -1,55 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpinson <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/24 17:22:23 by mpinson           #+#    #+#             */
+/*   Updated: 2017/04/24 17:22:54 by mpinson          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <limits.h>
 #include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-/*int main()
+int	main(int argc, char **argv)
 {
+	char	c;
+	char	*yolo;
+	int		fd;
+	int		i;
 
-	char *test = setlocale (LC_ALL, "");
-
-	char c;
-	int i = 45;
-	wchar_t rend;
-	srand(time(NULL));
-	write(1, "\e[0;32m", 8);
-	while(i)
-	{
-		rend = ((int)(rand() % 123)) + 1;
-
-		if(4 < ((int)(rand() % 10)) + 1)
-		{
-			printf("        ");
-			if(i == 1)
-			{
-				printf("\n");
-				i = 46;
-			}
-			i--;
-		}
-		if (ft_isprint(rend))
-		{
-			printf("       %C", rend);
-			if(i == 1)
-			{
-				printf("\n");
-				i = 46;
-			}
-			i--;
-		}
-	}
-//	sleep(1);
-}*/
-
-int main(void)
-{
-	setlocale (LC_ALL, "");
-	char c;
-	char i = 0;
-
-		printf("--->%d\n", sizeof(L'c'));
-		printf("%d\n" , ft_printf("ft_printf : %S", L"我是一只猫。"));
-		printf("%d\n" , printf("no_printf : %S", L"我是一只猫。"));
-		printf("%d\n" , ft_printf("ft_printf : %S", L"我是一只猫。"));
-		printf("%d\n" , printf("no_printf : %S", L"我是一只猫。"));
-
+	i = INT_MIN;
+	setlocale(LC_ALL, "");
+//	while (i < INT_MAX)
+//	{
+		printf("%d\n", ft_printf("ft_printf : @main_ftprintf: %####0000 33..1..#00d", 256));
+		printf("%d\n", printf("no_printf : @main_ftprintf: %####0000 33..1..#00d", 256));
+		i++;
+//	}
+	return (0);
 }

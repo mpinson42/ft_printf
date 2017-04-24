@@ -52,9 +52,6 @@ char	*ft_strjoin_char2(char *str, char c)
 int		ft_trie(t_glob *g, char *str, int *i)
 {
 	g->type = str[*i];
-	if ((g->flagl != 0 && g->flagh != 0 && g->flagz == 0 &&
-				g->flagj == 0))
-		return (-1);
 	if ((g->flag_0 == 1 && g->flag_neg == 1) || (g->presision == 0
 		&& (g->type == 'x' || g->type == 'X' || g->type == 'd' ||
 			g->type == 'o' || g->type == 'O' || g->type == 'D')))
@@ -64,6 +61,19 @@ int		ft_trie(t_glob *g, char *str, int *i)
 	if (g->flag_space == 1 && g->flag_more == 1)
 		g->flag_space = 0;
 	return (0);
+}
+
+void	ft_parant(int *i, int *rendu, char *str)
+{
+	int tmp;
+
+	if ((tmp = ft_color(str, i)) == -1)
+	{
+		rendu[0] = rendu[0] + write(1, "{", 1);
+		i[0]++;
+	}
+	else
+		i[0] = i[0] + tmp;
 }
 
 void	ft_assigne(char *str, int *i, t_glob *g, int *dot)

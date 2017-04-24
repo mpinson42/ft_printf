@@ -52,9 +52,9 @@ int		ft_next2(char *str, int *i, int *tab, t_glob *g)
 			if (!(tmp2 = ft_strjoin_char2(tmp2, str[i[0]++])))
 				return (-1);
 		i[0]--;
-		if (g->presision > 0 && tab[0] == 1)
+		if (g->presision > 0 && tab[0] == 1 && g->flag_largeur < ft_atoi(tmp2))
 			g->flag_largeur = ft_atoi(tmp2) / 10;
-		else
+		else if (g->flag_largeur < ft_atoi(tmp2))
 			g->flag_largeur = ft_atoi(tmp2);
 		tmp2 = NULL;
 	}
@@ -101,5 +101,13 @@ int		ft_lecture(int *i, char *str, va_list *ap)
 		return (1);
 	if (g.type == 'n')
 		return (0);
+	if (g.flagz == 1 && g.flagh == 1)
+		g.flagh = 0;
+	if (g.flagj == 1 && g.flagz == 1)
+		g.flagj = 0;
+	if (g.flagj == 1 && g.flagh == 1)
+		g.flagh = 0;
+	if (g.flagl == 1 && g.flagh == 2)
+		g.flagh = 0;
 	return (ft_choise(ap, &g));
 }

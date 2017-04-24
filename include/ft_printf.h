@@ -38,6 +38,8 @@ typedef struct	s_glob
 	int					i;
 }				t_glob;
 
+int				ft_color(char *str, int *i);
+void			ft_parant(int *i, int *rendu, char *str);
 int				ft_base(va_list *ap, t_glob *g);
 int				ft_unichar(va_list *ap, t_glob *g);
 int				ft_char(va_list *ap, t_glob *g);

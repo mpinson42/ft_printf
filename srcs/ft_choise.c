@@ -65,10 +65,7 @@ int		ft_time(va_list *ap, t_glob *g)
 int		ft_choise(va_list *ap, t_glob *g)
 {
 	if (g->type == 0)
-	{
-		ft_putchar('%');
-		return (1);
-	}
+		return (0);
 	if (g->type == 'p')
 		return (ft_pointeur(ap, g));
 	if (g->type == 's')

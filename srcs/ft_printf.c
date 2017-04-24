@@ -39,7 +39,7 @@ int	ft_color2(char *str, int *i)
 		return (write(1, "\e[0;36m", 8) + 3);
 	if (ft_strcmp(ft_strsub(str, i[0], 6), "{cyan}") == 0)
 		return (write(1, "\e[1;36m", 8) - 2);
-	return (write(1, "{", 1));
+	return (-1);
 }
 
 int	ft_color(char *str, int *i)
@@ -64,10 +64,7 @@ int	ft_pars_suit(int *i, int *rendu, char *str, va_list *ap)
 	int tmp;
 
 	if (str[i[0]] == '{')
-	{
-		i[0] = i[0] + ft_color(str, i);
-		rendu[0]++;
-	}
+		ft_parant(i, rendu, str);
 	else if (str[i[0]] == '%')
 	{
 		i[0]++;
@@ -79,12 +76,14 @@ int	ft_pars_suit(int *i, int *rendu, char *str, va_list *ap)
 			i[0]++;
 		i[0]++;
 	}
-	else if (str[i[0]])
+	else if (str[i[0]] && i[0] < (int)ft_strlen(str))
 	{
 		ft_uni_putchar(str[i[0]]);
 		rendu[0]++;
 		i[0]++;
 	}
+	else
+		i[0]++;
 	return (0);
 }
 
