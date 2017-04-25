@@ -34,7 +34,6 @@ wchar_t	*ft_largeur_uni_6(wchar_t *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }

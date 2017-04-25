@@ -53,9 +53,7 @@ char	*ft_presision_str2(char *str, t_glob *g, int bol)
 		while (str[i])
 			tmp[test++] = str[i++];
 		tmp[test] = 0;
-		free(str);
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }

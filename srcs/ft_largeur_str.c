@@ -31,7 +31,6 @@ char	*ft_largeur_str1(char *str, t_glob *g)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -55,7 +54,6 @@ char	*ft_largeur_str2(char *str, t_glob *g)
 			tmp[s++] = ' ';
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -80,7 +78,6 @@ char	*ft_largeur_str3(char *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -106,7 +103,6 @@ char	*ft_largeur_str4(char *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -132,7 +128,6 @@ char	*ft_largeur_str5(char *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }

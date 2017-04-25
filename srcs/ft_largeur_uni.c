@@ -31,7 +31,6 @@ wchar_t	*ft_largeur_uni_1(wchar_t *str, t_glob *g)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -55,7 +54,6 @@ wchar_t	*ft_largeur_uni_2(wchar_t *str, t_glob *g)
 			tmp[s++] = ' ';
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -80,7 +78,6 @@ wchar_t	*ft_largeur_uni_3(wchar_t *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -106,7 +103,6 @@ wchar_t	*ft_largeur_uni_4(wchar_t *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
@@ -132,7 +128,6 @@ wchar_t	*ft_largeur_uni_5(wchar_t *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }

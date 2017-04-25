@@ -16,12 +16,15 @@ int	ft_uni_putstr(wchar_t *str)
 {
 	int i;
 	int count;
+	int test;
 
 	count = 0;
 	i = 0;
 	while (str[i])
 	{
-		count = count + ft_uni_putchar(str[i]);
+		if ((test = ft_uni_putchar(str[i])) == -1)
+			return (-1);
+		count = count + test;
 		i++;
 	}
 	return (count);

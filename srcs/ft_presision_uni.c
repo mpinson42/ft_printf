@@ -87,9 +87,7 @@ wchar_t	*ft_presision_uni2(wchar_t *str, t_glob *g, int bol)
 		while (str[i])
 			tmp[test++] = str[i++];
 		tmp[test] = 0;
-		free(str);
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }

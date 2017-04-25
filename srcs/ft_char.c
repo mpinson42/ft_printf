@@ -22,10 +22,12 @@ int	ft_unichar(va_list *ap, t_glob *g)
 	str = va_arg(ap[0], wchar_t);
 	if (g->flag_largeur < 2)
 		return (ft_uni_putchar(str));
-	if (!(s = (wchar_t *)malloc(sizeof(wchar_t) * 2)))
+	if (!(s = (wchar_t *)malloc(sizeof(wchar_t) * (g->flag_largeur + 1))))
 		return (-1);
-	while (g->flag_largeur-- - 1 && !g->flag_neg)
+	while (g->flag_largeur-- - 1 && !g->flag_neg && !g->flag_0)
 		s[i++] = ' ';
+	while (g->flag_largeur-- && !g->flag_neg && g->flag_0)
+		s[i++] = '0';
 	if (!g->flag_neg)
 		s[i] = str;
 	while (g->flag_largeur-- - 1 && g->flag_neg)
@@ -33,7 +35,15 @@ int	ft_unichar(va_list *ap, t_glob *g)
 		s[0] = str;
 		s[i++ + 1] = ' ';
 	}
+	s[i + 1] = 0;
 	return (ft_uni_putstr(s));
+}
+
+int	ft_return(unsigned char str, char *s)
+{
+	if (str != 0)
+		return (write(1, s, ft_strlen(s)));
+	return (write(1, s, ft_strlen(s) + 1));
 }
 
 int	ft_char(va_list *ap, t_glob *g)
@@ -48,7 +58,7 @@ int	ft_char(va_list *ap, t_glob *g)
 	g->flag_largeur < 2 ? ft_putchar(str) : 0;
 	if (g->flag_largeur < 2)
 		return (1);
-	if (!(s = (char *)malloc(sizeof(char) * 2)))
+	if (!(s = (char *)malloc(sizeof(char) * (g->flag_largeur + 1))))
 		return (-1);
 	while (g->flag_largeur-- - 1 && !g->flag_neg && !g->flag_0)
 		s[g->i++] = ' ';
@@ -60,7 +70,6 @@ int	ft_char(va_list *ap, t_glob *g)
 		s[0] = str;
 		s[g->i++ + 1] = ' ';
 	}
-	if (str != 0)
-		return (write(1, s, ft_strlen(s)));
-	return (write(1, s, ft_strlen(s) + 1));
+	s[g->i + 1] = 0;
+	return (ft_return(str, s));
 }

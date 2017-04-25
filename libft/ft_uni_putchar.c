@@ -129,6 +129,8 @@ int		ft_uni_putchar(wchar_t n)
 {
 	int i;
 
+	if (n < 0 || n > 1114111 || (n >= 55296 && n <= 57343))
+		return (-1);
 	i = ft_strlen(ft_itoa_base(n, 2));
 	if (i <= 7)
 	{

@@ -33,7 +33,6 @@ int		ft_next(t_glob *g, char *str, int *i, int *dot)
 		else
 			g->presision = 0;
 		dot[0] = 1;
-		free(tmp);
 		tmp = NULL;
 	}
 	if (str[*i] == ' ')
@@ -76,8 +75,8 @@ int		ft_search_flag(t_glob *g, char *str, int *i)
 			tab[1] = 1;
 		if (ft_next(g, str, i, &tab[0]) == -1)
 			return (-1);
-		if (str[*i] == '0' && str[i[0] + 1] && !ft_isdigit(str[i[0] + 1]
-					&& str[i[0] + 1] != '%' && !ft_isdigit(str[i[0] - 1])))
+		if (str[*i] == '0' && str[i[0] + 1] && str[i[0] + 1] != '%' &&
+			!ft_isdigit(str[i[0] - 1]) && str[i[0] - 1] != '.')
 		{
 			g->flag_0 = 1;
 			tab[1] = 1;

@@ -33,7 +33,6 @@ char	*ft_largeur_str6(char *str, t_glob *g, int bol)
 			tmp[s++] = str[i++];
 		tmp[s] = 0;
 		str = tmp;
-		free(tmp);
 	}
 	return (str);
 }
