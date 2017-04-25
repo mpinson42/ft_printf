@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "../include/ft_printf.h"
 
-void	ft_uni_putchar_5(wchar_t n)
+int		ft_uni_putchar_5(wchar_t n)
 {
 	unsigned char	octets[4];
 	char			*str;
@@ -39,6 +39,7 @@ void	ft_uni_putchar_5(wchar_t n)
 	write(1, &octets[2], 1);
 	write(1, &octets[1], 1);
 	write(1, &octets[0], 1);
+	return (4);
 }
 
 void	ft_uni_putchar_4(wchar_t n)
@@ -91,6 +92,7 @@ int		ft_uni_putchar_3(wchar_t n)
 	octets[0] = (char)ft_atoi_base(bite[0], 2);
 	octets[1] = (char)ft_atoi_base(bite[1], 2);
 	octets[2] = (char)ft_atoi_base(bite[2], 2);
+	write(1, "", 0);
 	write(1, &octets[2], 1);
 	write(1, &octets[1], 1);
 	write(1, &octets[0], 1);
@@ -116,6 +118,8 @@ int		ft_uni_putchar_2(wchar_t n)
 	bite[1] = ft_strjoin("110", bite[1]);
 	octets[0] = (char)ft_atoi_base(bite[0], 2);
 	octets[1] = (char)ft_atoi_base(bite[1], 2);
+	write(1, "", 0);
+	write(1, "", 0);
 	write(1, &octets[1], 1);
 	write(1, &octets[0], 1);
 	return (2);
@@ -128,6 +132,9 @@ int		ft_uni_putchar(wchar_t n)
 	i = ft_strlen(ft_itoa_base(n, 2));
 	if (i <= 7)
 	{
+		write(1, "", 0);
+		write(1, "", 0);
+		write(1, "", 0);
 		ft_putchar(n);
 		return (1);
 	}
@@ -136,10 +143,7 @@ int		ft_uni_putchar(wchar_t n)
 	if (i > 11 && i <= 16)
 		return (ft_uni_putchar_3(n));
 	if (i > 16 && i <= 18)
-	{
-		ft_uni_putchar_5(n);
-		return (4);
-	}
+		return (ft_uni_putchar_5(n));
 	if (i > 18 && i <= 21)
 	{
 		ft_uni_putchar_4(n);

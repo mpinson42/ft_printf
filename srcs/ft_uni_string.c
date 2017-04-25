@@ -66,6 +66,8 @@ int		ft_uni_string(va_list *ap, t_glob *g)
 	}
 	if (!(str = ft_presision_uni1(str, g, bol)))
 		return (-1);
+	if (!(str = ft_presision_uni3(str, g, bol)))
+		return (-1);
 	if (!(str = ft_presision_uni2(str, g, bol)))
 		return (-1);
 	if (!(str = ft_largeur_uni_1(str, g)))

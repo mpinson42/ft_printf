@@ -36,8 +36,10 @@ typedef struct	s_glob
 	int					flagz;
 	char				type;
 	int					i;
+	char *leaks_ta_mere;
 }				t_glob;
 
+wchar_t			*ft_presision_uni3(wchar_t *str, t_glob *g, int bol);
 int				ft_color(char *str, int *i);
 void			ft_parant(int *i, int *rendu, char *str);
 int				ft_base(va_list *ap, t_glob *g);

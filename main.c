@@ -28,8 +28,8 @@ int	main(int argc, char **argv)
 	setlocale(LC_ALL, "");
 //	while (i < INT_MAX)
 //	{
-		printf("%d\n", ft_printf("ft_printf : @main_ftprintf: %####0000 33..1..#00d", 256));
-		printf("%d\n", printf("no_printf : @main_ftprintf: %####0000 33..1..#00d", 256));
+		printf("%d\n", ft_printf("ft_printf : @main_ftprintf: %04.2s", "Jambon"));
+		printf("%d\n", printf("no_printf : @main_ftprintf: %04.2s", "Jambon"));
 		i++;
 //	}
 	return (0);

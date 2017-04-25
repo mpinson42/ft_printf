@@ -56,7 +56,7 @@ int		ft_trie(t_glob *g, char *str, int *i)
 		&& (g->type == 'x' || g->type == 'X' || g->type == 'd' ||
 			g->type == 'o' || g->type == 'O' || g->type == 'D')))
 		g->flag_0 = 0;
-	if (g->presision > 0)
+	if (g->presision > 0 && g->type != 'S' && g->type != 's')
 		g->flag_0 = 0;
 	if (g->flag_space == 1 && g->flag_more == 1)
 		g->flag_space = 0;
